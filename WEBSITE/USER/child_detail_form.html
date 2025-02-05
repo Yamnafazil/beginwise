@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Meta Tags -->
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="">
+    <!-- Page Title -->
+    <title>BeginWise</title>
+    <!-- Bootstrap CSS and JS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/nav.css" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        h2 {
+            color: #EF923E;
+        }
+
+        .section-padding {
+            padding: 60px 0;
+        }
+
+        .form-control:focus {
+            box-shadow: none;
+            border-color: #EF923E;
+        }
+
+        .form-control {
+            background-color: white;
+        }
+
+        .btn-custom {
+            background-color: #EF923E;
+            color: white;
+        }
+
+        .btn-custom:hover {
+            background-color: #d87e1e;
+            color: white;
+        }
+
+        .error {
+            color: red;
+            font-size: 0.875rem;
+        }
+
+        .icon {
+            font-size: 1.25rem;
+            color: #EF923E;
+            margin-right: 10px;
+        }
+
+        .form-label {
+            font-weight: bold;
+        }
+
+        .input-group-text {
+            background-color: #EF923E;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg fixed-top" id="nav" style="margin-bottom:3px;">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">
+                <img src="assets/img/logo.svg" alt="beginwise" id="logo" width="180px" height="51px">
+            </a>
+
+            <span class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navoffcanvas"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
+                style="border: none;">
+                <i class="fa-solid fa-bars" style="color: #EF923E; font-size: 20px;"></i>
+            </span>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto  mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link li-item" aria-current="page" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link li-item" aria-current="page" href="schoolfinder.html">School Finder</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link li-item" aria-current="page" href="prephub.html">PrepHub</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link li-item" aria-current="page" href="about.html">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link li-item" aria-current="page" href="#">Contact Us</a>
+                    </li>
+
+                    <!-- Static version for logged-out state -->
+                    <li class="nav-item" id="signupLink">
+                        <a class="nav-link li-item" href="signup.html">Sign Up</a>
+                    </li>
+                    <li class="nav-item" id="loginLink">
+                        <a class="nav-link li-item" href="login.html">Login</a>
+                    </li>
+
+                    <!-- Static version for logged-in state -->
+                    <li class="nav-item dropdown profile mb-0 pt-0" id="userDropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="profileDropdown">
+                            <img src="assets/img/profile.png" alt="Profile Image" class="rounded-circle profile"
+                                width="40" height="40" style="position:relative; top:-10px;">
+                        </a>
+                        <ul class="dropdown-menu custom-dropdown" aria-labelledby="profileDropdown">
+                            <li><a class="dropdown-item" href="profile.html" id="usernameDisplay">User Name</a></li>
+                            <li><a class="dropdown-item" href="child_detail_form.html">Add Child Details</a></li>
+                            <li><a class="dropdown-item" href="child_detail_show.html">Show Child Details</a></li>
+                            <li><a class="dropdown-item" onclick="logout()">Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Off-canvas for collapse -->
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="navoffcanvas" aria-labelledby="offcanvasRightLabel">
+        <div class="offcanvas-header">
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"
+                style="position:absolute;top:30px; right:30px;"></button>
+        </div>
+        <div class="offcanvas-body">
+            <div>
+                <ul class="list-unstyled list-group list-group-flush pb-5 pt-5" id="offcanvasnav">
+                    <li class="list-group-item">
+                        <a class="offcanvasnavlink" aria-current="page" href="schoolfinder.html">School Finder</a>
+                    </li>
+                    <li class="list-group-item">
+                        <a class="offcanvasnavlink" aria-current="page" href="prephub.html">PrepHub</a>
+                    </li>
+                    <li class="list-group-item">
+                        <a class="offcanvasnavlink" aria-current="page" href="about.html">About Us</a>
+                    </li>
+                    <li class="list-group-item">
+                        <a class="offcanvasnavlink" aria-current="page" href="#">Contact Us</a>
+                    </li>
+
+                    <li class="list-group-item" id="signupLinkSmall">
+                        <a class="offcanvasnavlink" aria-current="page" href="signup.html">Sign up</a>
+                    </li>
+                    <li class="list-group-item" id="loginLinkSmall">
+                        <a class="offcanvasnavlink" aria-current="page" href="login.html">Login</a>
+                    </li>
+
+
+                    <!-- Static version for logged-in state -->
+                    <li class="nav-item dropdown profile mb-0 pt-0" id="userDropdownSmall">
+                        <a class="nav-link dropdown-toggle" href="#" id="profileDropdownSmall">
+                            <img src="assets/img/profile.png" alt="Profile Image" class="rounded-circle" width="40"
+                                height="40" style="position:relative; top:-10px;">
+                        </a>
+                        <ul class="dropdown-menu custom-dropdown" aria-labelledby="profileDropdown"
+                            style="position:absolute;right:150px;">
+                            <li><a class="dropdown-item" href="profile.html" id="usernameDisplaySmall">User Name</a>
+                            </li>
+                            <li><a class="dropdown-item" href="child_detail_form.html">Add Child Details</a></li>
+                            <li><a class="dropdown-item" href="child_detail_show.html">Show Child Details</a></li>
+                            <li><a class="dropdown-item" onclick="logout()">Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Check if a user is logged in
+        document.addEventListener("DOMContentLoaded", () => {
+            const user = JSON.parse(localStorage.getItem('user'));
+
+            const signupLink = document.getElementById('signupLink');
+            const loginLink = document.getElementById('loginLink');
+            const userDropdown = document.getElementById('userDropdown');
+            const usernameDisplay = document.getElementById('usernameDisplay');
+
+            const signupLinkSmall = document.getElementById('signupLinkSmall');
+            const loginLinkSmall = document.getElementById('loginLinkSmall');
+            const userDropdownSmall = document.getElementById('userDropdownSmall');
+            const usernameDisplaySmall = document.getElementById('usernameDisplaySmall');
+
+            if (user) {
+                // User is logged in
+                signupLink.style.display = 'none';
+                signupLinkSmall.style.display = 'none';
+                loginLink.style.display = 'none';
+                loginLinkSmall.style.display = 'none';
+                userDropdown.style.display = 'block';
+                usernameDisplay.textContent = user.username;
+                usernameDisplaySmall.textContent = user.username;
+            } else {
+                // No user logged in
+                signupLink.style.display = 'block';
+                signupLinkSmall.style.display = 'block';
+                loginLink.style.display = 'block';
+                loginLinkSmall.style.display = 'block';
+                userDropdown.style.display = 'none';
+                userDropdownSmall.style.display = 'none';
+            }
+        });
+
+        // Logout function
+        function logout() {
+            localStorage.removeItem('user'); // Remove user from localStorage
+            alert('Logout Successfully');
+            window.location.href = 'index.html';
+        }
+    </script>
+    <div style="height:90px" width="1005"></div>
+
+    <!-- End Header Section -->
+
+    <section id="registerChild" class="st-shape-wrap st-white-bg section-padding mt-5">
+        <div class="container">
+            <div class="st-section-heading st-style1 text-center">
+                <h2 class="st-section-heading-title">Child Details</h2>
+                <p class="st-section-heading-subtitle">Register Your Child Details by Filling the Form</p>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <form id="childForm" method="POST">
+                        <div class="mb-3">
+                            <label for="childName" class="form-label"><i class="fas fa-child icon"></i>Child
+                                Name</label>
+                            <input type="text" class="form-control" id="childName" name="c_name"
+                                placeholder="Enter Child Name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="date" class="form-label"><i class="fas fa-calendar-alt icon"></i>Date Of
+                                Birth</label>
+                            <input type="date" class="form-control" id="date" name="d_o_b" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="gradeLevel" class="form-label"><i class="fas fa-graduation-cap icon"></i>Grade
+                                Level</label>
+                            <select class="form-control" id="gradeLevel" name="g_level" required></select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="gender" class="form-label"><i class="fas fa-venus-mars icon"></i>Gender</label>
+                            <select class="form-control" id="gender" name="gender" required>
+                                <option value="">Select Gender</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-custom w-100">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center text-lg-start bg-body-tertiary">
+        <section class="pt-5">
+            <hr style="width: 100%; color: #EF923E;">
+            <div class="container text-center text-md-start p-0">
+                <div class="row mt-3">
+                    <div class="col-md-4 col-lg-3 col-xl-3 ps-0">
+                        <img src="assets/img/beginwiseLogo.svg" alt="" height="300px" width="300px" id="fimg"
+                            class="mb-4 mt-0">
+                    </div>
+                    <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+                        <h6 class="text-uppercase fw-bold mt-5 pt-4" style="color:#EF923E">Useful links</h6>
+                        <p><a href="schoolfinder.html" class="text-reset fl">School Finder</a></p>
+                        <p><a href="prephub.html" class="text-reset fl">Prephub</a></p>
+                        <p><a href="about.html" class="text-reset fl">About Us</a></p>
+                        <p><a href="#" class="text-reset fl">Contact Us</a></p>
+                    </div>
+                    <div class="col-md-4 col-lg-5 col-xl-3 mx-auto mb-md-0 mb-4">
+                        <h6 class="text-uppercase fw-bold mt-5 pt-4" style="color:#EF923E">Contact</h6>
+                        <a href="mailto:beginwise61@gmail.com" target="_blank">
+                            <p><i class="fas fa-envelope me-3" style="color:#EF923E"></i>info@example.com</p>
+                        </a>
+                        <a href="tel:03002468949" target="_blank">
+                            <p><i class="fas fa-phone me-3" style="color:#EF923E"></i>03002468949</p>
+                        </a>
+                        <a href="https://www.facebook.com/beginwise" target="_blank">
+                            <p><i class="fa-brands fa-square-facebook" style="color:#EF923E; font-size: 20px;"></i>
+                                Begin Wise</p>
+                        </a>
+                        <a href="https://www.instagram.com/begin_wise" target="_blank">
+                            <p><i class="fa-brands fa-square-instagram" style="color:#EF923E; font-size: 20px;"></i>
+                                begin_wise</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="text-center text-light p-4" style="background-color:#EF923E">
+            © 2024 Copyright: <a class="text-reset fw-bold" href="Recommendation.html">BeginWise</a>
+        </div>
+    </footer>
+
+    <!-- AJAX Scripts for Dynamic Data Fetching and Form Submission -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const form = document.getElementById("childForm");
+    
+            form.addEventListener("submit", function (event) {
+                // Get the birth date value from the input field
+                const birthDate = new Date(document.getElementById("date").value);
+    
+                // Get today's date
+                const today = new Date();
+    
+                // Calculate the age
+                let age = today.getFullYear() - birthDate.getFullYear();
+                const m = today.getMonth() - birthDate.getMonth();
+    
+                // Adjust the age if the birthday hasn't occurred yet this year
+                if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+                    age--;
+                }
+    
+                // Check if the child is less than 2 years old
+                if (age < 2) {
+                    event.preventDefault(); // Prevent form submission
+                    alert("Child must be at least 2 years old to register.");
+                }
+            });
+        });
+    
+        // Fetch grade levels dynamically from the server and populate the grade level dropdown
+        $(document).ready(function () {
+            $.ajax({
+                url: 'http://localhost:5000/api/grade/all', // Change this URL to your actual API endpoint
+                type: 'GET',
+                success: function (response) {
+                    var grades = response.data;
+                    grades.forEach(function (grade) {
+                        $('#gradeLevel').append($('<option>', {
+                            value: grade.id,
+                            text: grade.GRADE_LEVEL
+                        }));
+                    });
+                },
+                error: function (error) {
+                    console.log('Error fetching grades:', error);
+                }
+            });
+    
+            // Form submission to register a child
+            $('#childForm').submit(function (e) {
+                e.preventDefault(); // Prevent default form submission
+    
+                var dob = $('#date').val();
+                var birthDate = new Date(dob);
+                var currentYear = new Date().getFullYear();
+                var childYear = birthDate.getFullYear();
+                var age = currentYear - childYear;
+    
+                // Re-check age for proper validation on submit
+                if (age < 2) {
+                    alert("Child must be at least 2 years old to register.");
+                    return; // Prevent further submission
+                }
+    
+                var formData = {
+                    parent_id: JSON.parse(localStorage.getItem('user')).id,
+                    c_name: $('#childName').val(),
+                    d_o_b: childYear,
+                    g_level: $('#gradeLevel').val(),
+                    gender: $('#gender').val()
+                };
+    
+                $.ajax({
+                    url: 'http://localhost:5000/api/child/register-child', // Change this URL to your actual API endpoint
+                    type: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify(formData),
+                    success: function (data) {
+                        alert('Child registered successfully!');
+                        window.location.href = 'child_detail_show.html'
+                    },
+                    error: function (error) {
+                        console.error('Error registering child:', error);
+                        alert('Failed to register child.');
+                    }
+                });
+            });
+        });
+    </script>
+    
+
+</body>
+
+</html>

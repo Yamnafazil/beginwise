@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+    <!-- Meta Tags -->
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="">
+    <!-- Page Title -->
+    <title>BeginWise</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="assets/css/nav.css" />
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg fixed-top" id="nav" style="margin-bottom:3px;">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">
+                <img src="assets/img/logo.svg" alt="beginwise" id="logo" width="180px" height="51px">
+            </a>
+
+            <span class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navoffcanvas" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style="border: none;">
+                <i class="fa-solid fa-bars" style="color: #EF923E; font-size: 20px;"></i>
+            </span>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto  mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link li-item" aria-current="page" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link li-item" aria-current="page" href="schoolfinder.html">School Finder</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link li-item" aria-current="page" href="prephub.html">PrepHub</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link li-item" aria-current="page" href="about.html">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link li-item" aria-current="page" href="#">Contact Us</a>
+                    </li>
+
+                    <!-- Static version for logged-out state -->
+                    <li class="nav-item" id="signupLink">
+                        <a class="nav-link li-item" href="signup.html">Sign Up</a>
+                    </li>
+                    <li class="nav-item" id="loginLink">
+                        <a class="nav-link li-item" href="login.html">Login</a>
+                    </li>
+
+                    <!-- Static version for logged-in state -->
+                    <li class="nav-item dropdown profile mb-0 pt-0" id="userDropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="profileDropdown">
+                            <img src="assets/img/profile.png" alt="Profile Image" class="rounded-circle profile" width="40" height="40" style="position:relative; top:-10px;">
+                        </a>
+                        <ul class="dropdown-menu custom-dropdown" aria-labelledby="profileDropdown">
+                            <li><a class="dropdown-item" href="profile.html" id="usernameDisplay">User Name</a></li>
+                            <li><a class="dropdown-item" href="child_detail_form.html">Add Child Details</a></li>
+                            <li><a class="dropdown-item" href="child_detail_show.html">Show Child Details</a></li>
+                            <li><a class="dropdown-item" onclick="logout()">Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Off-canvas for collapse -->
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="navoffcanvas" aria-labelledby="offcanvasRightLabel">
+        <div class="offcanvas-header">
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close" style="position:absolute;top:30px; right:30px;"></button>
+        </div>
+        <div class="offcanvas-body">
+            <div>
+                <ul class="list-unstyled list-group list-group-flush pb-5 pt-5" id="offcanvasnav">
+                    <li class="list-group-item">
+                        <a class="offcanvasnavlink" aria-current="page" href="schoolfinder.html">School Finder</a>
+                    </li>
+                    <li class="list-group-item">
+                        <a class="offcanvasnavlink" aria-current="page" href="prephub.html">PrepHub</a>
+                    </li>
+                    <li class="list-group-item">
+                        <a class="offcanvasnavlink" aria-current="page" href="about.html">About Us</a>
+                    </li>
+                    <li class="list-group-item">
+                        <a class="offcanvasnavlink" aria-current="page" href="#">Contact Us</a>
+                    </li>
+
+                    <li class="list-group-item" id="signupLinkSmall">
+                        <a class="offcanvasnavlink" aria-current="page" href="signup.html">Sign up</a>
+                    </li>
+                    <li class="list-group-item" id="loginLinkSmall">
+                        <a class="offcanvasnavlink" aria-current="page" href="login.html">Login</a>
+                    </li>
+
+
+                    <!-- Static version for logged-in state -->
+                    <li class="nav-item dropdown profile mb-0 pt-0" id="userDropdownSmall">
+                        <a class="nav-link dropdown-toggle" href="#" id="profileDropdownSmall">
+                            <img src="assets/img/profile.png" alt="Profile Image" class="rounded-circle" width="40" height="40" style="position:relative; top:-10px;">
+                        </a>
+                        <ul class="dropdown-menu custom-dropdown" aria-labelledby="profileDropdown" style="position:absolute;right:150px;">
+                            <li><a class="dropdown-item" href="profile.html" id="usernameDisplaySmall">User Name</a></li>
+                            <li><a class="dropdown-item" href="child_detail_form.html">Add Child Details</a></li>
+                            <li><a class="dropdown-item" href="child_detail_show.html">Show Child Details</a></li>
+                            <li><a class="dropdown-item" onclick="logout()">Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+<script>
+    // Check if a user is logged in
+    document.addEventListener("DOMContentLoaded", () => {
+        const user = JSON.parse(localStorage.getItem('user'));
+
+        const signupLink = document.getElementById('signupLink');
+        const loginLink = document.getElementById('loginLink');
+        const userDropdown = document.getElementById('userDropdown');
+        const usernameDisplay = document.getElementById('usernameDisplay');
+
+        const signupLinkSmall = document.getElementById('signupLinkSmall');
+        const loginLinkSmall = document.getElementById('loginLinkSmall');
+        const userDropdownSmall = document.getElementById('userDropdownSmall');
+        const usernameDisplaySmall = document.getElementById('usernameDisplaySmall');
+
+        if (user) {
+            // User is logged in
+            signupLink.style.display = 'none';
+            signupLinkSmall.style.display = 'none';
+            loginLink.style.display = 'none';
+            loginLinkSmall.style.display = 'none';
+            userDropdown.style.display = 'block';
+            usernameDisplay.textContent = user.username;
+            usernameDisplaySmall.textContent = user.username;
+        } else {
+            // No user logged in
+            signupLink.style.display = 'block';
+            signupLinkSmall.style.display = 'block';
+            loginLink.style.display = 'block';
+            loginLinkSmall.style.display = 'block';
+            userDropdown.style.display = 'none';
+            userDropdownSmall.style.display = 'none';
+        }
+    });
+
+    // Logout function
+    function logout() {
+            localStorage.removeItem('user'); // Remove user from localStorage
+            alert('Logout Successfully');
+            window.location.href = 'index.html';
+        }
+</script>
+    <div style="height:90px" width="1005"></div>
+
+    <!-- End Header Section -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+                text-align: center;
+                background-color: #f0f8ff;
+                background-size: cover;
+            }
+
+            .container {
+                padding: 20px;
+                max-width: 1000px;
+                margin: 0 auto;
+                background-color: rgba(255, 255, 255, 0.9);
+                border-radius: 15px;
+                box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+            }
+
+            h1 {
+                color: #ff6347;
+                font-size: 32px;
+                margin-bottom: 10px;
+            }
+
+            h2 {
+                color: #333;
+                font-size: 24px;
+            }
+
+            p {
+                color: #555;
+                font-size: 18px;
+            }
+
+            .teaching-section {
+                margin-bottom: 40px;
+            }
+
+                .teaching-section img {
+                    width: 15%; /* Adjusted image size */
+                    height: auto;
+                    border: 2px solid #ddd;
+                    border-radius: 10px;
+                    margin: 15px;
+                }
+
+            .activity-section {
+                margin-top: 40px;
+                padding: 20px;
+                background-color: #ffffff;
+                border-radius: 15px;
+                box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            }
+
+            .instruction {
+                margin-bottom: 20px;
+                font-size: 18px;
+                color: #333;
+            }
+
+            .drag-container {
+                display: flex;
+                justify-content: space-around;
+                flex-wrap: wrap;
+            }
+
+            .drag-item {
+                padding: 20px;
+                margin: 10px;
+                width: 150px;
+                background-color: #efefef;
+                border: 2px solid #ff6347;
+                border-radius: 10px;
+                text-align: center;
+                font-size: 18px;
+                cursor: grab;
+                transition: background-color 0.3s;
+            }
+
+            .drop-area {
+                background-color: #f0f8ff;
+                border: 2px dashed #ff6347;
+                min-height: 150px;
+                width: 200px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                overflow: hidden;
+            }
+
+                .drop-area img {
+                    max-width: 100%;
+                    max-height: 100%;
+                    object-fit: cover;
+                    border-radius: 10px;
+                }
+
+                .drop-area.correct {
+                    background-color: #90ee90;
+                }
+
+                .drop-area.incorrect {
+                    background-color: #ffcccb;
+                }
+
+            #feedback {
+                font-size: 20px;
+                margin-top: 20px;
+            }
+
+            /* Sentence Making Section */
+            .sentence-making {
+                margin-top: 40px;
+                padding: 20px;
+                background-color: #ffffff;
+                border-radius: 15px;
+                box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            }
+
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                margin-bottom: 20px;
+            }
+
+            th, td {
+                border: 1px solid #ddd;
+                padding: 10px;
+                text-align: center;
+                font-size: 18px;
+            }
+
+            th {
+                background-color: #ff6347;
+                color: white;
+            }
+
+            select {
+                padding: 5px;
+                font-size: 18px;
+                margin: 0 5px;
+            }
+
+            button {
+                padding: 10px 15px;
+                font-size: 18px;
+                background-color: #ff6347;
+                color: white;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                transition: background-color 0.3s;
+            }
+
+                button:hover {
+                    background-color: #ff4500;
+                }
+
+            @media (max-width: 768px) {
+                h1 {
+                    font-size: 28px;
+                }
+
+                .teaching-section img {
+                    width: 80%;
+                }
+
+                .sentence-container {
+                    flex-direction: column;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container mt-5">
+            <h1>Let's Learn A/An!</h1>
+
+            <!-- Teaching Section -->
+            <div class="teaching-section">
+                <h2>Understanding A and An</h2>
+                <p><strong>A</strong> is used before words that start with a consonant sound. <strong>An</strong> is used before words that start with a vowel sound.</p>
+                <p>Examples: <strong>A</strong> cat, <strong>An</strong> apple.</p>
+                <img src="assets/img/kg_english/CAT1.png" alt="Cat Image" style="height: 140px ;">
+                <img src="assets/img/kg_english/apple.png" alt="Apple Image" style="height: 140px;">
+            </div>
+
+            <!-- Interactive Drag and Drop Section -->
+            <div class="activity-section">
+                <h2>Drag A or An to Match the Picture</h2>
+                <p class="instruction">Drag "A" or "An" to the correct image.</p>
+
+                <div class="drag-container">
+                    <!-- Drag Options -->
+                    <div id="drag-a" class="drag-item" draggable="true" ondragstart="drag(event)">A</div>
+                    <div id="drag-an" class="drag-item" draggable="true" ondragstart="drag(event)">An</div>
+                </div>
+
+                <div class="drag-container">
+                    <!-- Drop Zones -->
+                    <div id="drop-cat" class="drop-area" ondrop="drop(event, 'A', 'cat')" ondragover="allowDrop(event)">
+                        <img src="assets/img/kg_english/CAT1.png" alt="Cat">
+                    </div>
+                    <div id="drop-apple" class="drop-area" ondrop="drop(event, 'An', 'apple')" ondragover="allowDrop(event)">
+                        <img src="assets/img/kg_english/apple.png" alt="Apple">
+                    </div>
+                </div>
+
+                <!-- Feedback Section -->
+                <div id="feedback"></div>
+            </div>
+
+            <!-- Sentence Making Section -->
+            <div class="sentence-making">
+                <h2>Examples of Sentences</h2>
+                <table>
+                    <tr>
+                        <th>Sentence</th>
+                    </tr>
+                    <tr>
+                        <td>I like an apple.</td>
+                    </tr>
+                    <tr>
+                        <td>I have a cat.</td>
+                    </tr>
+                    <tr>
+                        <td>I like a dog.</td>
+                    </tr>
+                    <tr>
+                        <td>I have an orange.</td>
+                    </tr>
+                </table>
+
+                <h2>Make a Sentence</h2>
+                <p>Select words to complete the sentences:</p>
+                <div class="sentence-container">
+                    <p>I like </p>
+                    <select id="like-object">
+                        <option value="">Select</option>
+                        <option value="apple">an apple</option>
+                        <option value="cat">a cat</option>
+                        <option value="orange">an orange</option>
+                        <option value="dog">a dog</option>
+                    </select>
+                    <p>.</p>
+                </div>
+                <div class="sentence-container">
+                    <p>I have </p>
+                    <select id="have-object">
+                        <option value="">Select</option>
+                        <option value="apple">an apple</option>
+                        <option value="cat">a cat</option>
+                        <option value="orange">an orange</option>
+                        <option value="dog">a dog</option>
+                    </select>
+                    <p>.</p>
+                </div>
+                <button onclick="checkSentenceAnswers()" class="mb-5">Check Answers</button>
+
+                <div id="sentence-feedback" class="mb-5"></div>
+
+
+            </div>
+        </div>
+
+        <script>
+            // Speech API Function
+            function speak(text) {
+                const utterance = new SpeechSynthesisUtterance(text);
+                window.speechSynthesis.speak(utterance);
+            }
+
+            // Drag and Drop Functions
+            function allowDrop(event) {
+                event.preventDefault();
+            }
+
+            function drag(event) {
+                event.dataTransfer.setData("text", event.target.id);
+            }
+
+            function drop(event, correctAnswer, objectName) {
+                event.preventDefault();
+                const draggedElementId = event.dataTransfer.getData("text");
+                const draggedElement = document.getElementById(draggedElementId);
+                const box = event.target.closest('.drop-area');
+
+                // Get feedback element
+                const feedbackElement = document.getElementById('feedback');
+
+                // Check if dragged item matches the correct answer
+                if (draggedElement.textContent === correctAnswer) {
+                    box.classList.add("correct");
+                    box.classList.remove("incorrect");
+                    feedbackElement.textContent = `${draggedElement.textContent} is correct for ${objectName}.`;
+                    speak(`${draggedElement.textContent} is correct for ${objectName}.`);
+                } else {
+                    box.classList.add("incorrect");
+                    box.classList.remove("correct");
+                    feedbackElement.textContent = "Try Again!";
+                    speak("Try again!");
+                }
+            }
+
+            // Sentence Making Function
+            function checkSentenceAnswers() {
+                const likeObject = document.getElementById("like-object").value;
+                const haveObject = document.getElementById("have-object").value;
+                const sentenceFeedback = document.getElementById("sentence-feedback");
+
+                sentenceFeedback.textContent = "";
+
+                let feedbackText = "";
+                if (likeObject) {
+                    feedbackText += `Great! You like ${likeObject}. `;
+                } else {
+                    feedbackText += "Please select an object for 'I like'. ";
+                }
+
+                if (haveObject) {
+                    feedbackText += `Great! You have ${haveObject}. `;
+                } else {
+                    feedbackText += "Please select an object for 'I have'. ";
+                }
+
+                sentenceFeedback.textContent = feedbackText;
+                speak(feedbackText);
+            }
+        </script>
+        <!-- Footer -->
+        <footer class="text-center text-lg-start bg-body-tertiary">
+
+            <!-- Section: Links -->
+            <section class="pt-5">
+                <hr style="width: 100%; color: #EF923E;">
+                <div class="container text-center text-md-start p-0" id="fc">
+
+                    <!-- Grid row -->
+                    <div class="row mt-3">
+                        <!-- Grid column -->
+                        <div class="col-md-4 col-lg-3 col-xl-3 ps-0">
+                            <!-- Content -->
+                            <img src="assets/img/beginwiseLogo.svg" alt="" height="300px" width="300px" id="fimg" class="mb-4 mt-0">
+                        </div>
+
+                        <!-- Grid column -->
+                        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+                            <!-- Links -->
+                            <h6 class="text-uppercase fw-bold mt-5 pt-4" style="color:#EF923E">
+                                Useful links
+                            </h6>
+                            <p>
+                                <a href="schoolfinder.html" class="text-reset fl">School Finder</a>
+                            </p>
+                            <p>
+                                <a href="prephub.html" class="text-reset fl">Prephub</a>
+                            </p>
+                            <p>
+                                <a href="about.html" class="text-reset fl">About Us</a>
+                            </p>
+
+                            <p>
+                                <a href="#!" class="text-reset fl">Contact Us</a>
+                            </p>
+
+                        </div>
+                        <!-- Grid column -->
+                        <!-- Grid column -->
+                        <div class="col-md-4 col-lg-5 col-xl-3 mx-auto mb-md-0 mb-4">
+                            <!-- Links -->
+                            <h6 class="text-uppercase fw-bold mt-5 pt-4" style="color:#EF923E">Contact</h6>
+                            <a href="mailto:beginwise61@gmail.com" class="fl" target="_blank">
+                                <p style="color: black;">
+                                    <i class="fas fa-envelope me-3" style="color:#EF923E"></i>
+                                    info@example.com
+                                </p>
+                            </a>
+                            <a href="tel:03002468949" class="fl" target="_blank">
+                                <p style="color: black;"><i class="fas fa-phone me-3" style="color:#EF923E"></i> 03002468949</p>
+                            </a>
+                            <a href="https://www.facebook.com/beginwise" class="fl" target="_blank">
+                                <p style="color: black;"><i class="fa-brands fa-square-facebook" style="color:#EF923E; font-size: 20px;"></i>&nbsp;&nbsp;&nbsp; Begin Wise</p>
+                            </a>
+                            <a href="https://www.instagram.com/begin_wise?igsh=NDJrMGRnb296cXZ0" class="fl" target="_blank">
+                                <p style="color: black;"><i class="fa-brands fa-square-instagram" style="color:#EF923E; font-size: 20px;"></i>&nbsp;&nbsp;&nbsp; begin_wise</p>
+                            </a>
+                        </div>
+                        <!-- Grid column -->
+                    </div>
+                    <!-- Grid row -->
+                </div>
+            </section>
+            <!-- Section: Links -->
+            <!-- Copyright -->
+            <div class="text-center text-light p-4" style="background-color:#EF923E">
+                &copy; 2024 Copyright:
+                <a class="text-reset fw-bold" href="Recommendation.html">BeginWise</a>
+            </div>
+            <!-- Copyright -->
+        </footer>
+        <!-- Footer -->
+        <!-- Chat Toggle Button -->
+        <button id="chat-toggle">💬</button>
+
+        <!-- Chat Window -->
+        <div id="chat-window">
+            <div id="chat-header">Beginwise Chatbot</div>
+            <div id="chat-body">
+                <div class="message bot-message">Chatbot: Hi! Ask me anything about Beginwise. Type 'exit' or 'quit' to end the chat.</div>
+            </div>
+            <div id="question-recommendations">
+                <!-- Recommended Questions -->
+                <span class="recommended-question">What is Beginwise?</span>
+                <span class="recommended-question">How can Beginwise help my child's education?</span>
+                <span class="recommended-question">What age groups does Beginwise cater to?</span>
+                <span class="recommended-question">Tell me about the School Recommendation feature.</span>
+                <span class="recommended-question">How does the Parental Interview Preparation work?</span>
+            </div>
+            <div id="chat-footer">
+                <input type="text" id="chat-input" placeholder="Type your message..." />
+                <button id="send-button">Send</button>
+            </div>
+        </div>
+
+        <!-- JavaScript -->
+        <script>
+            // Responses similar to the Python version
+            const responses = {
+                "what is beginwise": "Beginwise is an educational platform designed to provide young learners with engaging and interactive learning experiences. It offers tools like school recommendations, admission test preparation, and fun learning games, tailored for children aged 1 to 8.",
+                "how can beginwise help my child's education": "Beginwise helps your child by offering personalized learning modules, interactive quizzes, and hands-on worksheets that make learning fun and effective.",
+                "what age groups does beginwise cater to": "Beginwise caters to children aged 1 to 6, covering the educational needs of students from Playgroup to Grade 1.",
+                "tell me about the school recommendation feature": "The School Recommendation feature helps parents find the best schools for their children based on factors such as location, board, and fee structure, making the school selection process easier.",
+                "how does the parental interview preparation work": "Our Parental Interview Preparation module offers guidance and practice questions to help parents prepare for school admission interviews, building confidence and ensuring you are well-prepared.",
+                // Add other questions and responses here...
+                "default": "I'm not sure how to respond to that. Can you please provide more details?"
+            };
+
+            // Chat toggle functionality
+            const chatToggle = document.getElementById('chat-toggle');
+            const chatWindow = document.getElementById('chat-window');
+            chatToggle.addEventListener('click', () => {
+                chatWindow.style.display = chatWindow.style.display === 'none' || chatWindow.style.display === '' ? 'flex' : 'none';
+            });
+
+            // Chatbot logic
+            const chatInput = document.getElementById('chat-input');
+            const chatBody = document.getElementById('chat-body');
+            const sendButton = document.getElementById('send-button');
+            const recommendedQuestions = document.querySelectorAll('.recommended-question');
+
+            function getResponse(message) {
+                const lowerMessage = message.toLowerCase();
+                for (const key in responses) {
+                    if (lowerMessage.includes(key)) {
+                        return responses[key];
+                    }
+                }
+                return responses['default'];
+            }
+
+            function appendMessage(content, isUser) {
+                const messageDiv = document.createElement('div');
+                messageDiv.classList.add('message', isUser ? 'user-message' : 'bot-message');
+                messageDiv.textContent = content;
+                chatBody.appendChild(messageDiv);
+                chatBody.scrollTop = chatBody.scrollHeight;  // Scroll to the bottom
+            }
+
+            function handleUserInput() {
+                const userMessage = chatInput.value.trim();
+                if (userMessage) {
+                    appendMessage(`You: ${userMessage}`, true);
+                    const botResponse = getResponse(userMessage);
+                    appendMessage(`Chatbot: ${botResponse}`, false);
+                    chatInput.value = '';  // Clear input field
+                }
+            }
+
+            sendButton.addEventListener('click', handleUserInput);
+
+            chatInput.addEventListener('keydown', (event) => {
+                if (event.key === 'Enter') {
+                    handleUserInput();
+                }
+            });
+
+            // Handle recommended questions click
+            recommendedQuestions.forEach(question => {
+                question.addEventListener('click', () => {
+                    chatInput.value = question.textContent;
+                    chatInput.focus();  // Set focus to the input field
+                });
+            });
+        </script>
+
+    </body>
+</html>
+

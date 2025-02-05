@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+    <!-- Meta Tags -->
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="">
+    <!-- Page Title -->
+    <title>BeginWise</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="assets/css/nav.css" />
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg fixed-top" id="nav" style="margin-bottom:3px;">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">
+                <img src="assets/img/logo.svg" alt="beginwise" id="logo" width="180px" height="51px">
+            </a>
+
+            <span class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navoffcanvas" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style="border: none;">
+                <i class="fa-solid fa-bars" style="color: #EF923E; font-size: 20px;"></i>
+            </span>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto  mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link li-item" aria-current="page" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link li-item" aria-current="page" href="schoolfinder.html">School Finder</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link li-item" aria-current="page" href="prephub.html">PrepHub</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link li-item" aria-current="page" href="about.html">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link li-item" aria-current="page" href="#">Contact Us</a>
+                    </li>
+
+                    <!-- Static version for logged-out state -->
+                    <li class="nav-item" id="signupLink">
+                        <a class="nav-link li-item" href="signup.html">Sign Up</a>
+                    </li>
+                    <li class="nav-item" id="loginLink">
+                        <a class="nav-link li-item" href="login.html">Login</a>
+                    </li>
+
+                    <!-- Static version for logged-in state -->
+                    <li class="nav-item dropdown profile mb-0 pt-0" id="userDropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="profileDropdown">
+                            <img src="assets/img/profile.png" alt="Profile Image" class="rounded-circle profile" width="40" height="40" style="position:relative; top:-10px;">
+                        </a>
+                        <ul class="dropdown-menu custom-dropdown" aria-labelledby="profileDropdown">
+                            <li><a class="dropdown-item" href="profile.html" id="usernameDisplay">User Name</a></li>
+                            <li><a class="dropdown-item" href="child_detail_form.html">Add Child Details</a></li>
+                            <li><a class="dropdown-item" href="child_detail_show.html">Show Child Details</a></li>
+                            <li><a class="dropdown-item" onclick="logout()">Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Off-canvas for collapse -->
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="navoffcanvas" aria-labelledby="offcanvasRightLabel">
+        <div class="offcanvas-header">
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close" style="position:absolute;top:30px; right:30px;"></button>
+        </div>
+        <div class="offcanvas-body">
+            <div>
+                <ul class="list-unstyled list-group list-group-flush pb-5 pt-5" id="offcanvasnav">
+                    <li class="list-group-item">
+                        <a class="offcanvasnavlink" aria-current="page" href="schoolfinder.html">School Finder</a>
+                    </li>
+                    <li class="list-group-item">
+                        <a class="offcanvasnavlink" aria-current="page" href="prephub.html">PrepHub</a>
+                    </li>
+                    <li class="list-group-item">
+                        <a class="offcanvasnavlink" aria-current="page" href="about.html">About Us</a>
+                    </li>
+                    <li class="list-group-item">
+                        <a class="offcanvasnavlink" aria-current="page" href="#">Contact Us</a>
+                    </li>
+
+                    <li class="list-group-item" id="signupLinkSmall">
+                        <a class="offcanvasnavlink" aria-current="page" href="signup.html">Sign up</a>
+                    </li>
+                    <li class="list-group-item" id="loginLinkSmall">
+                        <a class="offcanvasnavlink" aria-current="page" href="login.html">Login</a>
+                    </li>
+
+
+                    <!-- Static version for logged-in state -->
+                    <li class="nav-item dropdown profile mb-0 pt-0" id="userDropdownSmall">
+                        <a class="nav-link dropdown-toggle" href="#" id="profileDropdownSmall">
+                            <img src="assets/img/profile.png" alt="Profile Image" class="rounded-circle" width="40" height="40" style="position:relative; top:-10px;">
+                        </a>
+                        <ul class="dropdown-menu custom-dropdown" aria-labelledby="profileDropdown" style="position:absolute;right:150px;">
+                            <li><a class="dropdown-item" href="profile.html" id="usernameDisplaySmall">User Name</a></li>
+                            <li><a class="dropdown-item" href="child_detail_form.html">Add Child Details</a></li>
+                            <li><a class="dropdown-item" href="child_detail_show.html">Show Child Details</a></li>
+                            <li><a class="dropdown-item" onclick="logout()">Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+<script>
+    // Check if a user is logged in
+    document.addEventListener("DOMContentLoaded", () => {
+        const user = JSON.parse(localStorage.getItem('user'));
+
+        const signupLink = document.getElementById('signupLink');
+        const loginLink = document.getElementById('loginLink');
+        const userDropdown = document.getElementById('userDropdown');
+        const usernameDisplay = document.getElementById('usernameDisplay');
+
+        const signupLinkSmall = document.getElementById('signupLinkSmall');
+        const loginLinkSmall = document.getElementById('loginLinkSmall');
+        const userDropdownSmall = document.getElementById('userDropdownSmall');
+        const usernameDisplaySmall = document.getElementById('usernameDisplaySmall');
+
+        if (user) {
+            // User is logged in
+            signupLink.style.display = 'none';
+            signupLinkSmall.style.display = 'none';
+            loginLink.style.display = 'none';
+            loginLinkSmall.style.display = 'none';
+            userDropdown.style.display = 'block';
+            usernameDisplay.textContent = user.username;
+            usernameDisplaySmall.textContent = user.username;
+        } else {
+            // No user logged in
+            signupLink.style.display = 'block';
+            signupLinkSmall.style.display = 'block';
+            loginLink.style.display = 'block';
+            loginLinkSmall.style.display = 'block';
+            userDropdown.style.display = 'none';
+            userDropdownSmall.style.display = 'none';
+        }
+    });
+
+    // Logout function
+    function logout() {
+            localStorage.removeItem('user'); // Remove user from localStorage
+            alert('Logout Successfully');
+            window.location.href = 'index.html';
+        }
+</script>
+    <div style="height:90px" width="1005"></div>
+
+    <!-- End Header Section -->
+    <!-- <link rel="stylesheet" href="assets/css/playgroup.css"> -->
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            height: 100vh;
+            background-image: url('https://www.transparenttextures.com/patterns/bright-squares.png');
+            background-size: cover;
+            background-position: center;
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 10px; /* Reduced margin to fit the definition more naturally */
+            font-size: 48px;
+        }
+
+        .definition {
+            text-align: center;
+            font-size: 20px;
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        .h-container {
+            margin-top: 100px;
+            width: 90%;
+            max-width: 1000px;
+            background-color: white;
+            padding: 50px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border: 5px solid orange; /* Added orange border */
+            text-align: center; /* Center-align text in container */
+        }
+
+        .video-container {
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center; /* Center-align the video */
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #fff2d4;
+            font-size: 24px;
+        }
+
+        td {
+            font-size: 20px;
+        }
+
+        .voice-button {
+            background-color: #ff9800;
+            border: none;
+            color: white;
+            padding: 5px 10px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 2px 1px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+            .voice-button:hover {
+                background-color: #0056b3;
+            }
+    </style>
+
+    <div class="h-container">
+        <!-- Single container for all content -->
+        <h1>الفاظ متضاد</h1>
+
+        <!-- Video Section -->
+        <div class="video-container">
+            <video width="800" controls>
+                <source src="https://firebasestorage.googleapis.com/v0/b/beginwise-bf56e.appspot.com/o/alfaz%20mutazad.mp4?alt=media&token=a7ed9181-84b9-45ca-9088-b920ddf487b7" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+
+        <!-- Definition of الفاظ متضاد -->
+        <p class="definition">
+            الفاظ متضاد وہ الفاظ ہوتے ہیں جن کے معنی ایک دوسرے کی ضد ہوں۔ مثلاً اچھا اور برا، دن اور رات۔
+        </p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>متضاد</th>  <!-- Changed the heading to متضاد -->
+                    <th>لفظ</th>    <!-- Changed the heading to لفظ -->
+                    <th>سنیں</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>برا </td>  <!-- Changed the content to swap لفظ and متضاد -->
+                    <td>اچھا </td> <!-- Changed the content to swap لفظ and متضاد -->
+                    <td><button class="voice-button" onclick="speakText('برا', 'اچھا')">سنیں</button></td>
+                </tr>
+                <tr>
+                    <td>نیچا </td>
+                    <td>اونچا </td>
+                    <td><button class="voice-button" onclick="speakText('نیچا', 'اونچا')">سنیں</button></td>
+                </tr>
+                <tr>
+                    <td>بڑا </td>
+                    <td>چھوٹا </td>
+                    <td><button class="voice-button" onclick="speakText('بڑا', 'چھوٹا')">سنیں</button></td>
+                </tr>
+                <tr>
+                    <td>چھوٹا </td>
+                    <td>لمبا </td>
+                    <td><button class="voice-button" onclick="speakText('چھوٹا', 'لمبا')">سنیں</button></td>
+                </tr>
+                <tr>
+                    <td>ٹھنڈا </td>
+                    <td>گرم </td>
+                    <td><button class="voice-button" onclick="speakText('ٹھنڈا', 'گرم')">سنیں</button></td>
+                </tr>
+                <tr>
+                    <td>دن </td>
+                    <td>رات </td>
+                    <td><button class="voice-button" onclick="speakText('دن', 'رات')">سنیں</button></td>
+                </tr>
+                <tr>
+                    <td>پرانا </td>
+                    <td>نیا </td>
+                    <td><button class="voice-button" onclick="speakText('پرانا', 'نیا')">سنیں</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Footer -->
+    <footer class="text-center text-lg-start bg-body-tertiary">
+
+        <!-- Section: Links -->
+        <section class="pt-5">
+            <hr style="width: 100%; color: #EF923E;">
+            <div class="container text-center text-md-start p-0" id="fc">
+
+                <!-- Grid row -->
+                <div class="row mt-3">
+                    <!-- Grid column -->
+                    <div class="col-md-4 col-lg-3 col-xl-3 ps-0">
+                        <!-- Content -->
+                        <img src="assets/img/beginwiseLogo.svg" alt="" height="300px" width="300px" id="fimg" class="mb-4 mt-0">
+                    </div>
+
+                    <!-- Grid column -->
+                    <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+                        <!-- Links -->
+                        <h6 class="text-uppercase fw-bold mt-5 pt-4" style="color:#EF923E">
+                            Useful links
+                        </h6>
+                        <p>
+                            <a href="schoolfinder.html" class="text-reset fl">School Finder</a>
+                        </p>
+                        <p>
+                            <a href="prephub.html" class="text-reset fl">Prephub</a>
+                        </p>
+                        <p>
+                            <a href="about.html" class="text-reset fl">About Us</a>
+                        </p>
+
+                        <p>
+                            <a href="#!" class="text-reset fl">Contact Us</a>
+                        </p>
+
+                    </div>
+                    <!-- Grid column -->
+                    <!-- Grid column -->
+                    <div class="col-md-4 col-lg-5 col-xl-3 mx-auto mb-md-0 mb-4">
+                        <!-- Links -->
+                        <h6 class="text-uppercase fw-bold mt-5 pt-4" style="color:#EF923E">Contact</h6>
+                        <a href="mailto:beginwise61@gmail.com" class="fl" target="_blank">
+                            <p style="color: black;">
+                                <i class="fas fa-envelope me-3" style="color:#EF923E"></i>
+                                info@example.com
+                            </p>
+                        </a>
+                        <a href="tel:03002468949" class="fl" target="_blank">
+                            <p style="color: black;"><i class="fas fa-phone me-3" style="color:#EF923E"></i> 03002468949</p>
+                        </a>
+                        <a href="https://www.facebook.com/beginwise" class="fl" target="_blank">
+                            <p style="color: black;"><i class="fa-brands fa-square-facebook" style="color:#EF923E; font-size: 20px;"></i>&nbsp;&nbsp;&nbsp; Begin Wise</p>
+                        </a>
+                        <a href="https://www.instagram.com/begin_wise?igsh=NDJrMGRnb296cXZ0" class="fl" target="_blank">
+                            <p style="color: black;"><i class="fa-brands fa-square-instagram" style="color:#EF923E; font-size: 20px;"></i>&nbsp;&nbsp;&nbsp; begin_wise</p>
+                        </a>
+                    </div>
+                    <!-- Grid column -->
+                </div>
+                <!-- Grid row -->
+            </div>
+        </section>
+        <!-- Section: Links -->
+        <!-- Copyright -->
+        <div class="text-center text-light p-4" style="background-color:#EF923E">
+            &copy; 2024 Copyright:
+            <a class="text-reset fw-bold" href="Recommendation.html">BeginWise</a>
+        </div>
+        <!-- Copyright -->
+    </footer>
+    <!-- Footer -->
+    <!-- Chat Toggle Button -->
+    <button id="chat-toggle">💬</button>
+
+    <!-- Chat Window -->
+    <div id="chat-window">
+        <div id="chat-header">Beginwise Chatbot</div>
+        <div id="chat-body">
+            <div class="message bot-message">Chatbot: Hi! Ask me anything about Beginwise. Type 'exit' or 'quit' to end the chat.</div>
+        </div>
+        <div id="question-recommendations">
+            <!-- Recommended Questions -->
+            <span class="recommended-question">What is Beginwise?</span>
+            <span class="recommended-question">How can Beginwise help my child's education?</span>
+            <span class="recommended-question">What age groups does Beginwise cater to?</span>
+            <span class="recommended-question">Tell me about the School Recommendation feature.</span>
+            <span class="recommended-question">How does the Parental Interview Preparation work?</span>
+        </div>
+        <div id="chat-footer">
+            <input type="text" id="chat-input" placeholder="Type your message..." />
+            <button id="send-button">Send</button>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // Responses similar to the Python version
+        const responses = {
+            "what is beginwise": "Beginwise is an educational platform designed to provide young learners with engaging and interactive learning experiences. It offers tools like school recommendations, admission test preparation, and fun learning games, tailored for children aged 1 to 8.",
+            "how can beginwise help my child's education": "Beginwise helps your child by offering personalized learning modules, interactive quizzes, and hands-on worksheets that make learning fun and effective.",
+            "what age groups does beginwise cater to": "Beginwise caters to children aged 1 to 6, covering the educational needs of students from Playgroup to Grade 1.",
+            "tell me about the school recommendation feature": "The School Recommendation feature helps parents find the best schools for their children based on factors such as location, board, and fee structure, making the school selection process easier.",
+            "how does the parental interview preparation work": "Our Parental Interview Preparation module offers guidance and practice questions to help parents prepare for school admission interviews, building confidence and ensuring you are well-prepared.",
+            // Add other questions and responses here...
+            "default": "I'm not sure how to respond to that. Can you please provide more details?"
+        };
+
+        // Chat toggle functionality
+        const chatToggle = document.getElementById('chat-toggle');
+        const chatWindow = document.getElementById('chat-window');
+        chatToggle.addEventListener('click', () => {
+            chatWindow.style.display = chatWindow.style.display === 'none' || chatWindow.style.display === '' ? 'flex' : 'none';
+        });
+
+        // Chatbot logic
+        const chatInput = document.getElementById('chat-input');
+        const chatBody = document.getElementById('chat-body');
+        const sendButton = document.getElementById('send-button');
+        const recommendedQuestions = document.querySelectorAll('.recommended-question');
+
+        function getResponse(message) {
+            const lowerMessage = message.toLowerCase();
+            for (const key in responses) {
+                if (lowerMessage.includes(key)) {
+                    return responses[key];
+                }
+            }
+            return responses['default'];
+        }
+
+        function appendMessage(content, isUser) {
+            const messageDiv = document.createElement('div');
+            messageDiv.classList.add('message', isUser ? 'user-message' : 'bot-message');
+            messageDiv.textContent = content;
+            chatBody.appendChild(messageDiv);
+            chatBody.scrollTop = chatBody.scrollHeight;  // Scroll to the bottom
+        }
+
+        function handleUserInput() {
+            const userMessage = chatInput.value.trim();
+            if (userMessage) {
+                appendMessage(`You: ${userMessage}`, true);
+                const botResponse = getResponse(userMessage);
+                appendMessage(`Chatbot: ${botResponse}`, false);
+                chatInput.value = '';  // Clear input field
+            }
+        }
+
+        sendButton.addEventListener('click', handleUserInput);
+
+        chatInput.addEventListener('keydown', (event) => {
+            if (event.key === 'Enter') {
+                handleUserInput();
+            }
+        });
+
+        // Handle recommended questions click
+        recommendedQuestions.forEach(question => {
+            question.addEventListener('click', () => {
+                chatInput.value = question.textContent;
+                chatInput.focus();  // Set focus to the input field
+            });
+        });
+    </script>
+
+</body>
+</html>
+
+
+<script>
+    function speakText(word, opposite) {
+        const voices = window.speechSynthesis.getVoices();
+        let urduVoice = voices.find(voice => voice.lang === 'ur-PK');
+
+        if (!urduVoice) {
+            console.warn('Urdu voice not found. Falling back to default voice.');
+            urduVoice = voices[0];
+        }
+
+        const utteranceWord = new SpeechSynthesisUtterance(word);
+        const utteranceOpposite = new SpeechSynthesisUtterance(opposite);
+
+        utteranceWord.voice = urduVoice;
+        utteranceOpposite.voice = urduVoice;
+        utteranceWord.lang = urduVoice.lang || 'ur-PK';
+        utteranceOpposite.lang = urduVoice.lang || 'ur-PK';
+
+        window.speechSynthesis.speak(utteranceWord);
+        setTimeout(() => {
+            window.speechSynthesis.speak(utteranceOpposite);
+        }, 1000);
+    }
+
+    window.speechSynthesis.onvoiceschanged = () => {
+        const voices = window.speechSynthesis.getVoices();
+        console.log('Available voices:', voices);
+    };
+</script>
+
+

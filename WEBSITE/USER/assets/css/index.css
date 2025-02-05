@@ -1,0 +1,128 @@
+
+
+.flipcard{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.flip-card-container {
+    margin:90px auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 80px;
+    padding: 20px; /* Add padding to the container */
+  }
+  
+.flip-card {
+    width: 350px; /* Increase width */
+    height: 350px; /* Increase height */
+    perspective: 1000px;
+    margin-bottom: 20px; /* Add margin bottom */
+    text-align: center;
+    max-width: 800px;
+}
+  
+.flip-card h2{
+    font-size: 25px;
+    font-weight: 600;
+}
+  
+.flip-card-inner {
+    width: 100%;
+    height: 100%;
+    transition: transform 2.5s;
+    transform-style: preserve-3d;
+}
+  
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+}
+  
+.flip-card-front,
+.flip-card-back {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+    border-radius: 15px; /* Add border-radius */
+}
+  
+.flip-card-front {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px; /* Add padding */
+    background-color: #ffffff; /* Add background color */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add box-shadow */
+}
+  
+.flip-card-back {
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: rotateY(180deg);
+    padding: 20px; /* Add padding */
+    border-radius: 15px; /* Add border-radius */
+}
+  
+.flip-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px; /* Add border-radius to the image */
+}
+  
+  
+.register-btn {
+    display: block;
+    text-align: center;
+    margin-top: 60px;
+    text-decoration: none;
+    background-color: #EF923E;;
+    color: #fff;
+    padding: 10px 5px;
+    border-radius: 30px;
+}
+  
+.register-btn:hover {
+    background-color: #EF923E;;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+.accordion-item { --bs-accordion-active-color: #EF923E;
+    --bs-accordion-btn-focus-border-color:#EF923E ;
+     --bs-accordion-btn-focus-box-shadow: 0 0 0 0.25rem;
+     color:black;
+   }
+     .accordion-button:not(.collapsed) {
+         background-color:#EF923E!important; /* Active color */
+         border-color: #EF923E !important;
+         
+         
+ 
+     }
+     .accordion-button.collapsed{
+        
+         color:#EF923E !important;
+         
+         
+ 
+     }
+     .accordion-button:focus {
+     z-index: 3;
+     border-color: #EF923E var(--bs-accordion-btn-focus-border-color);
+     outline: 0;
+     box-shadow:white var(--bs-accordion-btn-focus-box-shadow);
+   }
+     .accordion-button:not(.collapsed) {
+     color: black var(--bs-accordion-active-color);
+     background-color:#EF923E var(--bs-accordion-active-bg);
+     box-shadow: inset 0 calc(-1* var(--bs-accordion-border-width)) 0 var(--bs-accordion-border-color);
+ }
+
+ 

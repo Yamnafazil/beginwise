@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+    <!-- Meta Tags -->
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="">
+    <!-- Page Title -->
+    <title>BeginWise</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="assets/css/nav.css" />
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg fixed-top" id="nav" style="margin-bottom:3px;">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">
+                <img src="assets/img/logo.svg" alt="beginwise" id="logo" width="180px" height="51px">
+            </a>
+
+            <span class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navoffcanvas" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style="border: none;">
+                <i class="fa-solid fa-bars" style="color: #EF923E; font-size: 20px;"></i>
+            </span>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto  mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link li-item" aria-current="page" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link li-item" aria-current="page" href="schoolfinder.html">School Finder</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link li-item" aria-current="page" href="prephub.html">PrepHub</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link li-item" aria-current="page" href="about.html">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link li-item" aria-current="page" href="#">Contact Us</a>
+                    </li>
+
+                    <!-- Static version for logged-out state -->
+                    <li class="nav-item" id="signupLink">
+                        <a class="nav-link li-item" href="signup.html">Sign Up</a>
+                    </li>
+                    <li class="nav-item" id="loginLink">
+                        <a class="nav-link li-item" href="login.html">Login</a>
+                    </li>
+
+                    <!-- Static version for logged-in state -->
+                    <li class="nav-item dropdown profile mb-0 pt-0" id="userDropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="profileDropdown">
+                            <img src="assets/img/profile.png" alt="Profile Image" class="rounded-circle profile" width="40" height="40" style="position:relative; top:-10px;">
+                        </a>
+                        <ul class="dropdown-menu custom-dropdown" aria-labelledby="profileDropdown">
+                            <li><a class="dropdown-item" href="profile.html" id="usernameDisplay">User Name</a></li>
+                            <li><a class="dropdown-item" href="child_detail_form.html">Add Child Details</a></li>
+                            <li><a class="dropdown-item" href="child_detail_show.html">Show Child Details</a></li>
+                            <li><a class="dropdown-item" onclick="logout()">Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Off-canvas for collapse -->
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="navoffcanvas" aria-labelledby="offcanvasRightLabel">
+        <div class="offcanvas-header">
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close" style="position:absolute;top:30px; right:30px;"></button>
+        </div>
+        <div class="offcanvas-body">
+            <div>
+                <ul class="list-unstyled list-group list-group-flush pb-5 pt-5" id="offcanvasnav">
+                    <li class="list-group-item">
+                        <a class="offcanvasnavlink" aria-current="page" href="schoolfinder.html">School Finder</a>
+                    </li>
+                    <li class="list-group-item">
+                        <a class="offcanvasnavlink" aria-current="page" href="prephub.html">PrepHub</a>
+                    </li>
+                    <li class="list-group-item">
+                        <a class="offcanvasnavlink" aria-current="page" href="about.html">About Us</a>
+                    </li>
+                    <li class="list-group-item">
+                        <a class="offcanvasnavlink" aria-current="page" href="#">Contact Us</a>
+                    </li>
+
+                    <li class="list-group-item" id="signupLinkSmall">
+                        <a class="offcanvasnavlink" aria-current="page" href="signup.html">Sign up</a>
+                    </li>
+                    <li class="list-group-item" id="loginLinkSmall">
+                        <a class="offcanvasnavlink" aria-current="page" href="login.html">Login</a>
+                    </li>
+
+
+                    <!-- Static version for logged-in state -->
+                    <li class="nav-item dropdown profile mb-0 pt-0" id="userDropdownSmall">
+                        <a class="nav-link dropdown-toggle" href="#" id="profileDropdownSmall">
+                            <img src="assets/img/profile.png" alt="Profile Image" class="rounded-circle" width="40" height="40" style="position:relative; top:-10px;">
+                        </a>
+                        <ul class="dropdown-menu custom-dropdown" aria-labelledby="profileDropdown" style="position:absolute;right:150px;">
+                            <li><a class="dropdown-item" href="profile.html" id="usernameDisplaySmall">User Name</a></li>
+                            <li><a class="dropdown-item" href="child_detail_form.html">Add Child Details</a></li>
+                            <li><a class="dropdown-item" href="child_detail_show.html">Show Child Details</a></li>
+                            <li><a class="dropdown-item" onclick="logout()">Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+<script>
+    // Check if a user is logged in
+    document.addEventListener("DOMContentLoaded", () => {
+        const user = JSON.parse(localStorage.getItem('user'));
+
+        const signupLink = document.getElementById('signupLink');
+        const loginLink = document.getElementById('loginLink');
+        const userDropdown = document.getElementById('userDropdown');
+        const usernameDisplay = document.getElementById('usernameDisplay');
+
+        const signupLinkSmall = document.getElementById('signupLinkSmall');
+        const loginLinkSmall = document.getElementById('loginLinkSmall');
+        const userDropdownSmall = document.getElementById('userDropdownSmall');
+        const usernameDisplaySmall = document.getElementById('usernameDisplaySmall');
+
+        if (user) {
+            // User is logged in
+            signupLink.style.display = 'none';
+            signupLinkSmall.style.display = 'none';
+            loginLink.style.display = 'none';
+            loginLinkSmall.style.display = 'none';
+            userDropdown.style.display = 'block';
+            usernameDisplay.textContent = user.username;
+            usernameDisplaySmall.textContent = user.username;
+        } else {
+            // No user logged in
+            signupLink.style.display = 'block';
+            signupLinkSmall.style.display = 'block';
+            loginLink.style.display = 'block';
+            loginLinkSmall.style.display = 'block';
+            userDropdown.style.display = 'none';
+            userDropdownSmall.style.display = 'none';
+        }
+    });
+
+    // Logout function
+    function logout() {
+            localStorage.removeItem('user'); // Remove user from localStorage
+            alert('Logout Successfully');
+            window.location.href = 'index.html';
+        }
+</script>
+    <div style="height:90px" width="1005"></div>
+
+    <!-- End Header Section -->
+
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/index.css">
+    <link rel="stylesheet" href="assets/css/prephub.css">
+
+    <style>
+        h2 {
+            color: #EF923E;
+        }
+
+        .st-section-heading-title span {
+            color: black;
+        }
+
+        .st-section-heading-subtitle {
+            margin-top: 10px;
+        }
+
+        .section-padding {
+            padding: 60px 0;
+        }
+
+        .section-bg {
+            background-color: #f9f9f9;
+        }
+
+        .icon {
+            font-size: 40px;
+            color: #EF923E;
+            margin-bottom: 20px;
+        }
+    </style>
+    <title>About Us</title>
+
+    <!-- Start About Section -->
+    <section class="st-about-wrap section-padding mt-5" id="about">
+        <div class="container">
+            <div class="st-section-heading st-style1 text-center">
+                <h2 class="st-section-heading-title">Our <span>Mission</span></h2>
+                <div class="st-section-heading-subtitle">
+                    At BeginWise, our mission is to revolutionize the way parents and students navigate the education landscape. We believe that every child deserves access to quality education tailored to their unique needs and aspirations. With this vision in mind, we have developed a comprehensive platform that empowers parents to make informed decisions about their child's education while providing students with the tools and resources they need to succeed academically.
+                </div>
+            </div>
+            <div class="st-height-b40 st-height-lg-b40"></div>
+        </div>
+    </section>
+
+    <section class="section-padding section-bg" id="who-we-are">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <div class="st-section-heading st-style1">
+                        <h2 class="st-section-heading-title"><span>Who</span> We Are?</h2>
+                        <div class="st-section-heading-subtitle">
+                            BeginWise is a team of passionate educators, developers, and innovators dedicated to reshaping the future of education. With a deep understanding of the challenges faced by parents and students in today's educational environment, we are committed to leveraging technology and data-driven insights to create impactful solutions that make a difference in the lives of families across the globe.
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 text-center">
+                    <img src="assets/img/who-are-we.jpg" alt="Who We Are" class="img-fluid">
+                </div>
+            </div>
+            <div class="st-height-b40 st-height-lg-b40"></div>
+        </div>
+    </section>
+
+    <section class="section-padding" id="our-approach">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6 order-md-2">
+                    <div class="st-section-heading st-style1">
+                        <h2 class="st-section-heading-title">Our <span>Approach</span></h2>
+                        <div class="st-section-heading-subtitle">
+                            At BeginWise, we believe in the power of personalized learning and informed decision-making. Our platform utilizes cutting-edge machine learning algorithms to provide tailored school recommendations based on user preferences and data analysis. Additionally, we offer a range of resources and tools, including exam preparation materials, educational games, and interview guidance, to support students at every stage of their academic journey.
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 order-md-1 text-center">
+                    <img src="assets/img/approach.png" alt="Our Approach" class="img-fluid">
+                </div>
+            </div>
+            <div class="st-height-b40 st-height-lg-b40"></div>
+        </div>
+    </section>
+
+    <section class="section-padding section-bg" id="why-choose-us">
+        <div class="container">
+            <div class="st-section-heading st-style1 text-center">
+                <h2 class="st-section-heading-title"><span>Why</span> Choose Us?</h2>
+                <div class="st-section-heading-subtitle">
+                    With BeginWise, parents can trust that they are making the best decisions for their child's education. Our platform offers transparency, reliability, and convenience, allowing parents to access comprehensive information about schools and educational resources in one centralized location. Moreover, our commitment to continuous improvement ensures that our platform evolves to meet the changing needs of families and educational institutions alike.
+                </div>
+            </div>
+            <div class="row text-center mt-5">
+                <div class="col-md-4">
+                    <i class="fas fa-graduation-cap icon"></i>
+                    <h4>Expert Guidance</h4>
+                    <p>Access to experienced educators and tailored advice to navigate the educational landscape.</p>
+                </div>
+                <div class="col-md-4">
+                    <i class="fas fa-chart-line icon"></i>
+                    <h4>Data-Driven Insights</h4>
+                    <p>Utilizing data to provide personalized recommendations and actionable insights.</p>
+                </div>
+                <div class="col-md-4">
+                    <i class="fas fa-hand-holding-heart icon"></i>
+                    <h4>Holistic Support</h4>
+                    <p>Comprehensive resources to support academic and emotional well-being of students.</p>
+                </div>
+            </div>
+            <div class="st-height-b40 st-height-lg-b40"></div>
+        </div>
+    </section>
+    <!-- End About Section -->
+    <!-- Footer -->
+    <footer class="text-center text-lg-start bg-body-tertiary">
+
+        <!-- Section: Links -->
+        <section class="pt-5">
+            <hr style="width: 100%; color: #EF923E;">
+            <div class="container text-center text-md-start p-0" id="fc">
+
+                <!-- Grid row -->
+                <div class="row mt-3">
+                    <!-- Grid column -->
+                    <div class="col-md-4 col-lg-3 col-xl-3 ps-0">
+                        <!-- Content -->
+                        <img src="assets/img/beginwiseLogo.svg" alt="" height="300px" width="300px" id="fimg" class="mb-4 mt-0">
+                    </div>
+
+                    <!-- Grid column -->
+                    <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+                        <!-- Links -->
+                        <h6 class="text-uppercase fw-bold mt-5 pt-4" style="color:#EF923E">
+                            Useful links
+                        </h6>
+                        <p>
+                            <a href="schoolfinder.html" class="text-reset fl">School Finder</a>
+                        </p>
+                        <p>
+                            <a href="prephub.html" class="text-reset fl">Prephub</a>
+                        </p>
+                        <p>
+                            <a href="about.html" class="text-reset fl">About Us</a>
+                        </p>
+
+                        <p>
+                            <a href="#!" class="text-reset fl">Contact Us</a>
+                        </p>
+
+                    </div>
+                    <!-- Grid column -->
+                    <!-- Grid column -->
+                    <div class="col-md-4 col-lg-5 col-xl-3 mx-auto mb-md-0 mb-4">
+                        <!-- Links -->
+                        <h6 class="text-uppercase fw-bold mt-5 pt-4" style="color:#EF923E">Contact</h6>
+                        <a href="mailto:beginwise61@gmail.com" class="fl" target="_blank">
+                            <p style="color: black;">
+                                <i class="fas fa-envelope me-3" style="color:#EF923E"></i>
+                                info@example.com
+                            </p>
+                        </a>
+                        <a href="tel:03002468949" class="fl" target="_blank">
+                            <p style="color: black;"><i class="fas fa-phone me-3" style="color:#EF923E"></i> 03002468949</p>
+                        </a>
+                        <a href="https://www.facebook.com/beginwise" class="fl" target="_blank">
+                            <p style="color: black;"><i class="fa-brands fa-square-facebook" style="color:#EF923E; font-size: 20px;"></i>&nbsp;&nbsp;&nbsp; Begin Wise</p>
+                        </a>
+                        <a href="https://www.instagram.com/begin_wise?igsh=NDJrMGRnb296cXZ0" class="fl" target="_blank">
+                            <p style="color: black;"><i class="fa-brands fa-square-instagram" style="color:#EF923E; font-size: 20px;"></i>&nbsp;&nbsp;&nbsp; begin_wise</p>
+                        </a>
+                    </div>
+                    <!-- Grid column -->
+                </div>
+                <!-- Grid row -->
+            </div>
+        </section>
+        <!-- Section: Links -->
+        <!-- Copyright -->
+        <div class="text-center text-light p-4" style="background-color:#EF923E">
+            &copy; 2024 Copyright:
+            <a class="text-reset fw-bold" href="Recommendation.html">BeginWise</a>
+        </div>
+        <!-- Copyright -->
+    </footer>
+    <!-- Footer -->
+    <!-- Chat Toggle Button -->
+    <button id="chat-toggle">💬</button>
+
+    <!-- Chat Window -->
+    <div id="chat-window">
+        <div id="chat-header">Beginwise Chatbot</div>
+        <div id="chat-body">
+            <div class="message bot-message">Chatbot: Hi! Ask me anything about Beginwise. Type 'exit' or 'quit' to end the chat.</div>
+        </div>
+        <div id="question-recommendations">
+            <!-- Recommended Questions -->
+            <span class="recommended-question">What is Beginwise?</span>
+            <span class="recommended-question">How can Beginwise help my child's education?</span>
+            <span class="recommended-question">What age groups does Beginwise cater to?</span>
+            <span class="recommended-question">Tell me about the School Recommendation feature.</span>
+            <span class="recommended-question">How does the Parental Interview Preparation work?</span>
+        </div>
+        <div id="chat-footer">
+            <input type="text" id="chat-input" placeholder="Type your message..." />
+            <button id="send-button">Send</button>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // Responses similar to the Python version
+        const responses = {
+            "what is beginwise": "Beginwise is an educational platform designed to provide young learners with engaging and interactive learning experiences. It offers tools like school recommendations, admission test preparation, and fun learning games, tailored for children aged 1 to 8.",
+            "how can beginwise help my child's education": "Beginwise helps your child by offering personalized learning modules, interactive quizzes, and hands-on worksheets that make learning fun and effective.",
+            "what age groups does beginwise cater to": "Beginwise caters to children aged 1 to 6, covering the educational needs of students from Playgroup to Grade 1.",
+            "tell me about the school recommendation feature": "The School Recommendation feature helps parents find the best schools for their children based on factors such as location, board, and fee structure, making the school selection process easier.",
+            "how does the parental interview preparation work": "Our Parental Interview Preparation module offers guidance and practice questions to help parents prepare for school admission interviews, building confidence and ensuring you are well-prepared.",
+            // Add other questions and responses here...
+            "default": "I'm not sure how to respond to that. Can you please provide more details?"
+        };
+
+        // Chat toggle functionality
+        const chatToggle = document.getElementById('chat-toggle');
+        const chatWindow = document.getElementById('chat-window');
+        chatToggle.addEventListener('click', () => {
+            chatWindow.style.display = chatWindow.style.display === 'none' || chatWindow.style.display === '' ? 'flex' : 'none';
+        });
+
+        // Chatbot logic
+        const chatInput = document.getElementById('chat-input');
+        const chatBody = document.getElementById('chat-body');
+        const sendButton = document.getElementById('send-button');
+        const recommendedQuestions = document.querySelectorAll('.recommended-question');
+
+        function getResponse(message) {
+            const lowerMessage = message.toLowerCase();
+            for (const key in responses) {
+                if (lowerMessage.includes(key)) {
+                    return responses[key];
+                }
+            }
+            return responses['default'];
+        }
+
+        function appendMessage(content, isUser) {
+            const messageDiv = document.createElement('div');
+            messageDiv.classList.add('message', isUser ? 'user-message' : 'bot-message');
+            messageDiv.textContent = content;
+            chatBody.appendChild(messageDiv);
+            chatBody.scrollTop = chatBody.scrollHeight;  // Scroll to the bottom
+        }
+
+        function handleUserInput() {
+            const userMessage = chatInput.value.trim();
+            if (userMessage) {
+                appendMessage(`You: ${userMessage}`, true);
+                const botResponse = getResponse(userMessage);
+                appendMessage(`Chatbot: ${botResponse}`, false);
+                chatInput.value = '';  // Clear input field
+            }
+        }
+
+        sendButton.addEventListener('click', handleUserInput);
+
+        chatInput.addEventListener('keydown', (event) => {
+            if (event.key === 'Enter') {
+                handleUserInput();
+            }
+        });
+
+        // Handle recommended questions click
+        recommendedQuestions.forEach(question => {
+            question.addEventListener('click', () => {
+                chatInput.value = question.textContent;
+                chatInput.focus();  // Set focus to the input field
+            });
+        });
+    </script>
+
+</body>
+</html>
+

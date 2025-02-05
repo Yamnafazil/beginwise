@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+    <!-- Meta Tags -->
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="">
+    <!-- Page Title -->
+    <title>BeginWise</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="assets/css/nav.css" />
+    <link rel="stylesheet" href="assets/css/index.css">
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg fixed-top" id="nav" style="margin-bottom:3px;">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">
+                <img src="assets/img/logo.svg" alt="beginwise" id="logo" width="180px" height="51px">
+            </a>
+
+            <span class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navoffcanvas" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style="border: none;">
+                <i class="fa-solid fa-bars" style="color: #EF923E; font-size: 20px;"></i>
+            </span>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto  mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link li-item" aria-current="page" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link li-item" aria-current="page" href="schoolfinder.html">School Finder</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link li-item" aria-current="page" href="prephub.html">PrepHub</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link li-item" aria-current="page" href="about.html">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link li-item" aria-current="page" href="#">Contact Us</a>
+                    </li>
+
+                    <!-- Static version for logged-out state -->
+                    <li class="nav-item" id="signupLink">
+                        <a class="nav-link li-item" href="signup.html">Sign Up</a>
+                    </li>
+                    <li class="nav-item" id="loginLink">
+                        <a class="nav-link li-item" href="login.html">Login</a>
+                    </li>
+
+                    <!-- Static version for logged-in state -->
+                    <li class="nav-item dropdown profile mb-0 pt-0" id="userDropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="profileDropdown">
+                            <img src="assets/img/profile.png" alt="Profile Image" class="rounded-circle profile" width="40" height="40" style="position:relative; top:-10px;">
+                        </a>
+                        <ul class="dropdown-menu custom-dropdown" aria-labelledby="profileDropdown">
+                            <li><a class="dropdown-item" href="profile.html" id="usernameDisplay">User Name</a></li>
+                            <li><a class="dropdown-item" href="child_detail_form.html">Add Child Details</a></li>
+                            <li><a class="dropdown-item" href="child_detail_show.html">Show Child Details</a></li>
+                            <li><a class="dropdown-item" onclick="logout()">Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Off-canvas for collapse -->
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="navoffcanvas" aria-labelledby="offcanvasRightLabel">
+        <div class="offcanvas-header">
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close" style="position:absolute;top:30px; right:30px;"></button>
+        </div>
+        <div class="offcanvas-body">
+            <div>
+                <ul class="list-unstyled list-group list-group-flush pb-5 pt-5" id="offcanvasnav">
+                    <li class="list-group-item">
+                        <a class="offcanvasnavlink" aria-current="page" href="schoolfinder.html">School Finder</a>
+                    </li>
+                    <li class="list-group-item">
+                        <a class="offcanvasnavlink" aria-current="page" href="prephub.html">PrepHub</a>
+                    </li>
+                    <li class="list-group-item">
+                        <a class="offcanvasnavlink" aria-current="page" href="about.html">About Us</a>
+                    </li>
+                    <li class="list-group-item">
+                        <a class="offcanvasnavlink" aria-current="page" href="#">Contact Us</a>
+                    </li>
+
+                    <li class="list-group-item" id="signupLinkSmall">
+                        <a class="offcanvasnavlink" aria-current="page" href="signup.html">Sign up</a>
+                    </li>
+                    <li class="list-group-item" id="loginLinkSmall">
+                        <a class="offcanvasnavlink" aria-current="page" href="login.html">Login</a>
+                    </li>
+
+
+                    <!-- Static version for logged-in state -->
+                    <li class="nav-item dropdown profile mb-0 pt-0" id="userDropdownSmall">
+                        <a class="nav-link dropdown-toggle" href="#" id="profileDropdownSmall">
+                            <img src="assets/img/profile.png" alt="Profile Image" class="rounded-circle" width="40" height="40" style="position:relative; top:-10px;">
+                        </a>
+                        <ul class="dropdown-menu custom-dropdown" aria-labelledby="profileDropdown" style="position:absolute;right:150px;">
+                            <li><a class="dropdown-item" href="profile.html" id="usernameDisplaySmall">User Name</a></li>
+                            <li><a class="dropdown-item" href="child_detail_form.html">Add Child Details</a></li>
+                            <li><a class="dropdown-item" href="child_detail_show.html">Show Child Details</a></li>
+                            <li><a class="dropdown-item" onclick="logout()">Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+<script>
+    // Check if a user is logged in
+    document.addEventListener("DOMContentLoaded", () => {
+        const user = JSON.parse(localStorage.getItem('user'));
+
+        const signupLink = document.getElementById('signupLink');
+        const loginLink = document.getElementById('loginLink');
+        const userDropdown = document.getElementById('userDropdown');
+        const usernameDisplay = document.getElementById('usernameDisplay');
+
+        const signupLinkSmall = document.getElementById('signupLinkSmall');
+        const loginLinkSmall = document.getElementById('loginLinkSmall');
+        const userDropdownSmall = document.getElementById('userDropdownSmall');
+        const usernameDisplaySmall = document.getElementById('usernameDisplaySmall');
+
+        if (user) {
+            // User is logged in
+            signupLink.style.display = 'none';
+            signupLinkSmall.style.display = 'none';
+            loginLink.style.display = 'none';
+            loginLinkSmall.style.display = 'none';
+            userDropdown.style.display = 'block';
+            usernameDisplay.textContent = user.username;
+            usernameDisplaySmall.textContent = user.username;
+        } else {
+            // No user logged in
+            signupLink.style.display = 'block';
+            signupLinkSmall.style.display = 'block';
+            loginLink.style.display = 'block';
+            loginLinkSmall.style.display = 'block';
+            userDropdown.style.display = 'none';
+            userDropdownSmall.style.display = 'none';
+        }
+    });
+
+    // Logout function
+    function logout() {
+            localStorage.removeItem('user'); // Remove user from localStorage
+            alert('Logout Successfully');
+            window.location.href = 'index.html';
+        }
+</script>
+    <div style="height:90px" width="1005"></div>
+
+    <!-- End Header Section -->
+    <title>Log In</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        h2 {
+            color: #EF923E;
+        }
+
+        .st-section-heading-title span {
+            color: black;
+        }
+
+        .st-section-heading-subtitle {
+            margin-top: 10px;
+            font-size: 1rem;
+        }
+
+        .section-padding {
+            padding: 60px 0;
+        }
+
+        .form-control:focus {
+            box-shadow: none;
+            border-color: #EF923E;
+        }
+
+        .form-control {
+            background-color: white;
+        }
+
+        .btn-custom {
+            background-color: #EF923E;
+            color: white;
+        }
+
+            .btn-custom:hover {
+                background-color: #d87e1e;
+                color: white;
+            }
+
+        .error {
+            color: red;
+            font-size: 0.875rem;
+        }
+
+        .icon {
+            font-size: 1.25rem;
+            color: #EF923E;
+            margin-right: 10px;
+        }
+
+        .form-label {
+            font-weight: bold;
+        }
+
+        .input-group-text {
+            background-color: #EF923E;
+            color: white;
+        }
+
+        .toggle-password {
+            cursor: pointer;
+        }
+    </style>
+    </head>
+    <body>
+
+        <section id="login" class="st-shape-wrap st-white-bg section-padding mt-5">
+            <div class="container">
+                <div class="st-section-heading st-style1 text-center">
+                    <h2 class="st-section-heading-title">Log In</h2>
+                    <p class="st-section-heading-subtitle">Access your account and continue your educational journey with us.</p>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <form id="loginForm" onsubmit="return handleLogin(event);">
+                            <div id="st-alert1"></div>
+                            <div class="mb-3">
+                                <label for="loginName" class="form-label"><i class="fas fa-user icon"></i>Username</label>
+                                <input type="text" class="form-control" name="user_name" id="loginName" placeholder="Enter Username" required>
+                                <div id="loginNameError" class="error"></div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="loginPassword" class="form-label"><i class="fas fa-lock icon"></i>Password</label>
+                                <div class="input-group">
+                                    <input type="password" class="form-control" name="user_password" id="loginPassword" placeholder="Enter Password" required>
+                                    <span class="input-group-text toggle-password" onclick="togglePasswordVisibility()"><i class="fas fa-eye" id="togglePasswordIcon"></i></span>
+                                </div>
+                                <div id="loginPasswordError" class="error"></div>
+                            </div>
+                            <button class="btn btn-custom w-100" type="submit" name="btn">Log In</button>
+                        </form>
+
+                        <script>
+                            function validateLoginUname() {
+                                var name = document.getElementById('loginName').value;
+                                var nameError = document.getElementById('loginNameError');
+                                nameError.innerHTML = "";
+                                var usernameRegex = /^[a-zA-Z0-9_\s\.]{3,20}$/;
+                                if (!usernameRegex.test(name)) {
+                                    nameError.innerHTML = "Please enter a valid username (3-20 characters, alphanumeric only).";
+                                    return false;
+                                }
+                                return true;
+                            }
+
+                            function validateLoginPass() {
+                                var password = document.getElementById('loginPassword').value;
+                                var passwordError = document.getElementById('loginPasswordError');
+                                passwordError.innerHTML = "";
+                                if (password.length < 8) {
+                                    passwordError.innerHTML = "Please enter a password with at least 8 characters.";
+                                    return false;
+                                }
+                                return true;
+                            }
+
+                            function validateLoginForm() {
+                                var nameValid = validateLoginUname();
+                                var passwordValid = validateLoginPass();
+                                return nameValid && passwordValid;
+                            }
+
+                            function togglePasswordVisibility() {
+                                var passwordField = document.getElementById('loginPassword');
+                                var toggleIcon = document.getElementById('togglePasswordIcon');
+                                if (passwordField.type === 'password') {
+                                    passwordField.type = 'text';
+                                    toggleIcon.classList.remove('fa-eye');
+                                    toggleIcon.classList.add('fa-eye-slash');
+                                } else {
+                                    passwordField.type = 'password';
+                                    toggleIcon.classList.remove('fa-eye-slash');
+                                    toggleIcon.classList.add('fa-eye');
+                                }
+                            }
+                        </script>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="text-center text-lg-start bg-body-tertiary">
+
+            <!-- Section: Links -->
+            <section class="pt-5">
+                <hr style="width: 100%; color: #EF923E;">
+                <div class="container text-center text-md-start p-0" id="fc">
+
+                    <!-- Grid row -->
+                    <div class="row mt-3">
+                        <!-- Grid column -->
+                        <div class="col-md-4 col-lg-3 col-xl-3 ps-0">
+                            <!-- Content -->
+                            <img src="assets/img/beginwiseLogo.svg" alt="" height="300px" width="300px" id="fimg" class="mb-4 mt-0">
+                        </div>
+
+                        <!-- Grid column -->
+                        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+                            <!-- Links -->
+                            <h6 class="text-uppercase fw-bold mt-5 pt-4" style="color:#EF923E">
+                                Useful links
+                            </h6>
+                            <p>
+                                <a href="schoolfinder.html" class="text-reset fl">School Finder</a>
+                            </p>
+                            <p>
+                                <a href="prephub.html" class="text-reset fl">Prephub</a>
+                            </p>
+                            <p>
+                                <a href="about.html" class="text-reset fl">About Us</a>
+                            </p>
+
+                            <p>
+                                <a href="#!" class="text-reset fl">Contact Us</a>
+                            </p>
+
+                        </div>
+                        <!-- Grid column -->
+                        <!-- Grid column -->
+                        <div class="col-md-4 col-lg-5 col-xl-3 mx-auto mb-md-0 mb-4">
+                            <!-- Links -->
+                            <h6 class="text-uppercase fw-bold mt-5 pt-4" style="color:#EF923E">Contact</h6>
+                            <a href="mailto:beginwise61@gmail.com" class="fl" target="_blank">
+                                <p style="color: black;">
+                                    <i class="fas fa-envelope me-3" style="color:#EF923E"></i>
+                                    info@example.com
+                                </p>
+                            </a>
+                            <a href="tel:03002468949" class="fl" target="_blank">
+                                <p style="color: black;"><i class="fas fa-phone me-3" style="color:#EF923E"></i> 03002468949</p>
+                            </a>
+                            <a href="https://www.facebook.com/beginwise" class="fl" target="_blank">
+                                <p style="color: black;"><i class="fa-brands fa-square-facebook" style="color:#EF923E; font-size: 20px;"></i>&nbsp;&nbsp;&nbsp; Begin Wise</p>
+                            </a>
+                            <a href="https://www.instagram.com/begin_wise?igsh=NDJrMGRnb296cXZ0" class="fl" target="_blank">
+                                <p style="color: black;"><i class="fa-brands fa-square-instagram" style="color:#EF923E; font-size: 20px;"></i>&nbsp;&nbsp;&nbsp; begin_wise</p>
+                            </a>
+                        </div>
+                        <!-- Grid column -->
+                    </div>
+                    <!-- Grid row -->
+                </div>
+            </section>
+            <!-- Section: Links -->
+            <!-- Copyright -->
+            <div class="text-center text-light p-4" style="background-color:#EF923E">
+                &copy; 2024 Copyright:
+                <a class="text-reset fw-bold" href="Recommendation.html">BeginWise</a>
+            </div>
+            <!-- Copyright -->
+        </footer>
+        <!-- Footer -->
+        <!-- Chat Toggle Button -->
+        <button id="chat-toggle">💬</button>
+
+        <!-- Chat Window -->
+        <div id="chat-window">
+            <div id="chat-header">Beginwise Chatbot</div>
+            <div id="chat-body">
+                <div class="message bot-message">Chatbot: Hi! Ask me anything about Beginwise. Type 'exit' or 'quit' to end the chat.</div>
+            </div>
+            <div id="question-recommendations">
+                <!-- Recommended Questions -->
+                <span class="recommended-question">What is Beginwise?</span>
+                <span class="recommended-question">How can Beginwise help my child's education?</span>
+                <span class="recommended-question">What age groups does Beginwise cater to?</span>
+                <span class="recommended-question">Tell me about the School Recommendation feature.</span>
+                <span class="recommended-question">How does the Parental Interview Preparation work?</span>
+            </div>
+            <div id="chat-footer">
+                <input type="text" id="chat-input" placeholder="Type your message..." />
+                <button id="send-button">Send</button>
+            </div>
+        </div>
+
+
+        <script>
+            async function handleLogin(event) {
+                event.preventDefault(); // Prevent form submission
+    
+                const user_name = document.getElementById('loginName').value.trim();
+                const user_password = document.getElementById('loginPassword').value.trim();
+    
+                try {
+                    const response = await fetch('http://localhost:5000/api/user/login', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ user_name, user_password }),
+                    });
+    
+                    const result = await response.json();
+    
+                    if (response.ok) {
+                        // Login successful
+                        alert('Login Successful');
+                        localStorage.setItem('user', JSON.stringify(result.user));
+                        window.location.href = 'index.html'; // Redirect to homepage
+                    } else {
+                        // Show error message
+                        alert(result.error || 'Login failed. Please check your credentials.');
+                    }
+                } catch (error) {
+                    console.error('Error:', error);
+                    alert('An error occurred. Please try again later.');
+                }
+            }
+    
+            function togglePasswordVisibility() {
+                const passwordField = document.getElementById('loginPassword');
+                const toggleIcon = document.getElementById('togglePasswordIcon');
+                if (passwordField.type === 'password') {
+                    passwordField.type = 'text';
+                    toggleIcon.classList.remove('fa-eye');
+                    toggleIcon.classList.add('fa-eye-slash');
+                } else {
+                    passwordField.type = 'password';
+                    toggleIcon.classList.remove('fa-eye-slash');
+                    toggleIcon.classList.add('fa-eye');
+                }
+            }
+        </script>
+
+        <!-- JavaScript -->
+        <script>
+            // Responses similar to the Python version
+            const responses = {
+                "what is beginwise": "Beginwise is an educational platform designed to provide young learners with engaging and interactive learning experiences. It offers tools like school recommendations, admission test preparation, and fun learning games, tailored for children aged 1 to 8.",
+                "how can beginwise help my child's education": "Beginwise helps your child by offering personalized learning modules, interactive quizzes, and hands-on worksheets that make learning fun and effective.",
+                "what age groups does beginwise cater to": "Beginwise caters to children aged 1 to 6, covering the educational needs of students from Playgroup to Grade 1.",
+                "tell me about the school recommendation feature": "The School Recommendation feature helps parents find the best schools for their children based on factors such as location, board, and fee structure, making the school selection process easier.",
+                "how does the parental interview preparation work": "Our Parental Interview Preparation module offers guidance and practice questions to help parents prepare for school admission interviews, building confidence and ensuring you are well-prepared.",
+                // Add other questions and responses here...
+                "default": "I'm not sure how to respond to that. Can you please provide more details?"
+            };
+
+            // Chat toggle functionality
+            const chatToggle = document.getElementById('chat-toggle');
+            const chatWindow = document.getElementById('chat-window');
+            chatToggle.addEventListener('click', () => {
+                chatWindow.style.display = chatWindow.style.display === 'none' || chatWindow.style.display === '' ? 'flex' : 'none';
+            });
+
+            // Chatbot logic
+            const chatInput = document.getElementById('chat-input');
+            const chatBody = document.getElementById('chat-body');
+            const sendButton = document.getElementById('send-button');
+            const recommendedQuestions = document.querySelectorAll('.recommended-question');
+
+            function getResponse(message) {
+                const lowerMessage = message.toLowerCase();
+                for (const key in responses) {
+                    if (lowerMessage.includes(key)) {
+                        return responses[key];
+                    }
+                }
+                return responses['default'];
+            }
+
+            function appendMessage(content, isUser) {
+                const messageDiv = document.createElement('div');
+                messageDiv.classList.add('message', isUser ? 'user-message' : 'bot-message');
+                messageDiv.textContent = content;
+                chatBody.appendChild(messageDiv);
+                chatBody.scrollTop = chatBody.scrollHeight;  // Scroll to the bottom
+            }
+
+            function handleUserInput() {
+                const userMessage = chatInput.value.trim();
+                if (userMessage) {
+                    appendMessage(`You: ${userMessage}`, true);
+                    const botResponse = getResponse(userMessage);
+                    appendMessage(`Chatbot: ${botResponse}`, false);
+                    chatInput.value = '';  // Clear input field
+                }
+            }
+
+            sendButton.addEventListener('click', handleUserInput);
+
+            chatInput.addEventListener('keydown', (event) => {
+                if (event.key === 'Enter') {
+                    handleUserInput();
+                }
+            });
+
+            // Handle recommended questions click
+            recommendedQuestions.forEach(question => {
+                question.addEventListener('click', () => {
+                    chatInput.value = question.textContent;
+                    chatInput.focus();  // Set focus to the input field
+                });
+            });
+        </script>
+
+    </body>
+</html>
